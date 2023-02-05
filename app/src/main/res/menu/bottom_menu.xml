@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_ni"
+        android:icon="@drawable/home"
+        android:title="Domov" />
+    <item
+        android:id="@+id/modlitby_ni"
+        android:icon="@drawable/books"
+        android:title="Modlitby" />
+
+    <item
+        android:id="@+id/noveny_ni"
+        android:icon="@drawable/article"
+        android:title="Novény" />
+
+    <item
+        android:id="@+id/litanie_ni"
+        android:icon="@drawable/books2"
+        android:title="Litánie" />
+
+
+</menu>
