@@ -1,7 +1,5 @@
 package sk.mmarcincin.monoli.utils;
 
-import android.os.Build;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -42,9 +40,7 @@ public class Mockdb {
         p.setOrder(i);
         p.setFavorite(false);
         p.setCustom(false);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            p.setCreatedAt(LocalDateTime.now());
-        }
+        p.setCreatedAt(LocalDateTime.now());
         return p;
     }
     private Novena getRandomNovena(int i){
@@ -56,10 +52,8 @@ public class Mockdb {
         n.setCategory(getRandomNumber(1,6));
         n.setOrder(i);
         n.setFavorite(false);
-       n.setCustom(false);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            n.setCreatedAt(LocalDateTime.now());
-        }
+        n.setCustom(false);
+        n.setCreatedAt(LocalDateTime.now());
         n.setLitanyId(i+1000);
         return n;
     }
@@ -81,9 +75,8 @@ public class Mockdb {
         l.setOrder(i);
         l.setFavorite(false);
         l.setCustom(false);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            l.setCreatedAt(LocalDateTime.now());
-        }
+        l.setCreatedAt(LocalDateTime.now());
+
         return l;
     }
 

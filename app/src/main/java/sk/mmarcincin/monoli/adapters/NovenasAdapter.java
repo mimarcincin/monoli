@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import sk.mmarcincin.monoli.R;
+import sk.mmarcincin.monoli.models.Novena;
 
 public class NovenasAdapter extends RecyclerView.Adapter<NovenasAdapter.NovenasViewHolder> {
-    private ArrayList<String> localDataSet ;
+    private ArrayList<Novena> localDataSet ;
     private Context context;
 
-    public NovenasAdapter(ArrayList<String> localDataSet, Context context) {
+    public NovenasAdapter(ArrayList<Novena> localDataSet, Context context) {
         this.localDataSet = localDataSet;
         this.context = context;
     }
@@ -48,7 +49,7 @@ public class NovenasAdapter extends RecyclerView.Adapter<NovenasAdapter.NovenasV
     @Override
     public void onBindViewHolder(@NonNull NovenasViewHolder holder, int position) {
         //localDataSet = new String[]{"novena1", "novena2", "novena3"};
-        holder.textView.setText(localDataSet.get(position));
+        holder.textView.setText(localDataSet.get(position).getName());
     }
 
     @Override

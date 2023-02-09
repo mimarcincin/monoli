@@ -2,13 +2,24 @@ package sk.mmarcincin.monoli.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import sk.mmarcincin.monoli.R;
+import sk.mmarcincin.monoli.adapters.NovenasAdapter;
+import sk.mmarcincin.monoli.adapters.PrayersAdapter;
+import sk.mmarcincin.monoli.models.Novena;
+import sk.mmarcincin.monoli.models.Prayer;
+import sk.mmarcincin.monoli.utils.Mockdb;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +36,8 @@ public class PrayersListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    private ArrayList<Prayer> localDataSet;
+    private RecyclerView recyclerView;
     public PrayersListFragment() {
         // Required empty public constructor
     }
@@ -63,4 +75,25 @@ public class PrayersListFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_prayers_list, container, false);
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        dataInitilize();
+
+        recyclerView = view.findViewById(R.id.prayersRecyclerView);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+        PrayersAdapter prayersAdapter = new PrayersAdapter(localDataSet,getContext());
+        recyclerView.setAdapter(prayersAdapter);
+        prayersAdapter.notifyDataSetChanged();
+    }
+
+    private void dataInitilize() {
+        Mockdb db = new Mockdb();
+        localDataSet = db.getMockPrayers(50);
+
+    }
+
 }

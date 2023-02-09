@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import sk.mmarcincin.monoli.R;
 import sk.mmarcincin.monoli.adapters.NovenasAdapter;
 import sk.mmarcincin.monoli.database.DatabaseHelper;
+import sk.mmarcincin.monoli.models.Novena;
+import sk.mmarcincin.monoli.utils.Mockdb;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,7 +35,7 @@ public class NovenasListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ArrayList<String> localDataSet;
+    private ArrayList<Novena> localDataSet;
     private RecyclerView recyclerView;
 
     public NovenasListFragment() {
@@ -90,9 +92,8 @@ public class NovenasListFragment extends Fragment {
     }
 
     private void dataInitilize() {
-         localDataSet = new ArrayList<String>();
-        for (int i = 0; i < 50; i++) {
-            localDataSet.add("item c."+i);
-        }
+        Mockdb db = new Mockdb();
+        localDataSet = db.getMockNovenas(50);
+
     }
 }
