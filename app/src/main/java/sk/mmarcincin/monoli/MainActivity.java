@@ -1,6 +1,7 @@
 package sk.mmarcincin.monoli;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 
@@ -24,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
         NovenasListFragment novenasFragment = new NovenasListFragment();
         //novenasAdapter = new NovenasAdapter(new String[]{"novena1", "novena2", "novena3"});
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(myToolbar);
+
         navigationView.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()) {
@@ -43,10 +47,7 @@ public class MainActivity extends AppCompatActivity {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragmentContainerView, mainMenuFragment).commit();
                     return true;
             }
-
             return false;
-
-
         });
     }
 

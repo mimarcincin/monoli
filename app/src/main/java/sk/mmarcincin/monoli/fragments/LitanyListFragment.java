@@ -5,25 +5,19 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
-
 import sk.mmarcincin.monoli.R;
-import sk.mmarcincin.monoli.adapters.NovenasAdapter;
-import sk.mmarcincin.monoli.database.DatabaseHelper;
 
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link NovenasListFragment#newInstance} factory method to
+ * Use the {@link LitanyListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NovenasListFragment extends Fragment {
+public class LitanyListFragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,10 +27,8 @@ public class NovenasListFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private ArrayList<String> localDataSet;
-    private RecyclerView recyclerView;
 
-    public NovenasListFragment() {
+    public LitanyListFragment() {
         // Required empty public constructor
     }
 
@@ -46,11 +38,11 @@ public class NovenasListFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NovenasListFragment.
+     * @return A new instance of fragment LitanyListFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NovenasListFragment newInstance(String param1, String param2) {
-        NovenasListFragment fragment = new NovenasListFragment();
+    public static LitanyListFragment newInstance(String param1, String param2) {
+        LitanyListFragment fragment = new LitanyListFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -71,28 +63,13 @@ public class NovenasListFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       // DatabaseHelper databaseHelper = new DatabaseHelper(this.getContext() );
-        return inflater.inflate(R.layout.fragment_novenas_list, container, false);
+        return inflater.inflate(R.layout.fragment_litany_list, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        dataInitilize();
 
-        recyclerView = view.findViewById(R.id.novenasRecyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        NovenasAdapter novenasAdapter = new NovenasAdapter(localDataSet,getContext());
-        recyclerView.setAdapter(novenasAdapter);
-        novenasAdapter.notifyDataSetChanged();
-    }
-
-    private void dataInitilize() {
-         localDataSet = new ArrayList<String>();
-        for (int i = 0; i < 50; i++) {
-            localDataSet.add("item c."+i);
-        }
     }
 }

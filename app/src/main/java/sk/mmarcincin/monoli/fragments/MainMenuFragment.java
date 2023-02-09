@@ -6,7 +6,7 @@ import sk.mmarcincin.monoli.R;
 public class MainMenuFragment extends Fragment {
 
     public MainMenuFragment() {
-        super(R.layout.main_menu_fragment);
+        super(R.layout.fragment_main_menu);
     }
 
 }
