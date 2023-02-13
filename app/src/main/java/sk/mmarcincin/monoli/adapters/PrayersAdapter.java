@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,15 +13,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import sk.mmarcincin.monoli.R;
+import sk.mmarcincin.monoli.interfaces.PrayerOnClickListener;
 import sk.mmarcincin.monoli.models.Prayer;
 
 public class PrayersAdapter extends RecyclerView.Adapter<PrayersAdapter.PrayersViewHolder> {
     private ArrayList<Prayer> localDataSet;
     private Context context;
-
-    public PrayersAdapter(ArrayList<Prayer> localDataSet, Context context) {
+    private PrayerOnClickListener prayerOnClickListener;
+    public PrayersAdapter(ArrayList<Prayer> localDataSet, Context context, PrayerOnClickListener prayerOnClickListener) {
         this.localDataSet = localDataSet;
         this.context = context;
+        this.prayerOnClickListener = prayerOnClickListener;
     }
 
     @NonNull
@@ -36,7 +39,14 @@ public class PrayersAdapter extends RecyclerView.Adapter<PrayersAdapter.PrayersV
 
     @Override
     public void onBindViewHolder(@NonNull PrayersAdapter.PrayersViewHolder holder, int position) {
-        holder.textView.setText(localDataSet.get(position).getName());
+        holder.textView.setText(localDataSet.get(holder.getAdapterPosition()).getName());
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                prayerOnClickListener.onPrayerClick(localDataSet.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -46,10 +56,13 @@ public class PrayersAdapter extends RecyclerView.Adapter<PrayersAdapter.PrayersV
 
     public class PrayersViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
-
+        private final FrameLayout frameLayout;
+        private final View itemView;
         public PrayersViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.textView);
+            frameLayout = itemView.findViewById(R.id.prayer_item);
+            this.itemView = itemView;
         }
 
         public TextView getTextView() {
