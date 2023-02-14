@@ -56,12 +56,10 @@ public class PrayersAdapter extends RecyclerView.Adapter<PrayersAdapter.PrayersV
 
     public class PrayersViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
-        private final FrameLayout frameLayout;
         private final View itemView;
         public PrayersViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.textView);
-            frameLayout = itemView.findViewById(R.id.prayer_item);
             this.itemView = itemView;
         }
 

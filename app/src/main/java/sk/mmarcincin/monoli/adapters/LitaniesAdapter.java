@@ -12,15 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import sk.mmarcincin.monoli.R;
+import sk.mmarcincin.monoli.interfaces.LitanyOnClickListener;
 import sk.mmarcincin.monoli.models.Litany;
 
 public class LitaniesAdapter extends RecyclerView.Adapter<LitaniesAdapter.LitaniesViewHolder> {
     private ArrayList<Litany> localDataSet;
     private Context context;
-
-    public LitaniesAdapter(ArrayList<Litany> localDataSet, Context context) {
+    private LitanyOnClickListener litanyOnClickListener;
+    public LitaniesAdapter(ArrayList<Litany> localDataSet, Context context, LitanyOnClickListener litanyOnClickListener) {
         this.localDataSet = localDataSet;
         this.context = context;
+        this.litanyOnClickListener = litanyOnClickListener;
     }
 
     @NonNull
@@ -36,7 +38,13 @@ public class LitaniesAdapter extends RecyclerView.Adapter<LitaniesAdapter.Litani
 
     @Override
     public void onBindViewHolder(@NonNull LitaniesAdapter.LitaniesViewHolder holder, int position) {
-        holder.textView.setText(localDataSet.get(position).getName());
+        holder.textView.setText(localDataSet.get(holder.getAdapterPosition()).getName());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                litanyOnClickListener.onLitanyClick(localDataSet.get(holder.getAdapterPosition()));
+            }
+        });
     }
 
     @Override
@@ -46,10 +54,11 @@ public class LitaniesAdapter extends RecyclerView.Adapter<LitaniesAdapter.Litani
 
     public class LitaniesViewHolder extends RecyclerView.ViewHolder {
         private final TextView textView;
-
+        private final View itemView;
         public LitaniesViewHolder(@NonNull View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.textView);
+            this.itemView = itemView;
         }
 
         public TextView getTextView() {

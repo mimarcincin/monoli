@@ -16,11 +16,8 @@ import java.util.ArrayList;
 
 import sk.mmarcincin.monoli.MainActivity;
 import sk.mmarcincin.monoli.R;
-import sk.mmarcincin.monoli.adapters.NovenasAdapter;
 import sk.mmarcincin.monoli.adapters.PrayersAdapter;
-import sk.mmarcincin.monoli.interfaces.BaseFragment;
 import sk.mmarcincin.monoli.interfaces.PrayerOnClickListener;
-import sk.mmarcincin.monoli.models.Novena;
 import sk.mmarcincin.monoli.models.Prayer;
 import sk.mmarcincin.monoli.utils.Mockdb;
 
@@ -29,7 +26,7 @@ import sk.mmarcincin.monoli.utils.Mockdb;
  * Use the {@link PrayersListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PrayersListFragment extends Fragment implements PrayerOnClickListener, BaseFragment {
+public class PrayersListFragment extends Fragment implements PrayerOnClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -104,9 +101,5 @@ public class PrayersListFragment extends Fragment implements PrayerOnClickListen
         ((MainActivity) getActivity()).openFragment(prayer);
     }
 
-    @Override
-    public boolean onBackPressed() {
 
-        return BaseFragment.super.onBackPressed();
-    }
 }

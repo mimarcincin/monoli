@@ -14,9 +14,11 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import sk.mmarcincin.monoli.MainActivity;
 import sk.mmarcincin.monoli.R;
 import sk.mmarcincin.monoli.adapters.LitaniesAdapter;
 import sk.mmarcincin.monoli.adapters.PrayersAdapter;
+import sk.mmarcincin.monoli.interfaces.LitanyOnClickListener;
 import sk.mmarcincin.monoli.models.Litany;
 import sk.mmarcincin.monoli.models.Novena;
 import sk.mmarcincin.monoli.utils.Mockdb;
@@ -26,7 +28,7 @@ import sk.mmarcincin.monoli.utils.Mockdb;
  * Use the {@link LitaniesListFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class LitaniesListFragment extends Fragment {
+public class LitaniesListFragment extends Fragment implements LitanyOnClickListener {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,7 +87,7 @@ public class LitaniesListFragment extends Fragment {
         recyclerView = view.findViewById(R.id.litaniesRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-        LitaniesAdapter litaniesAdapter = new LitaniesAdapter(localDataSet,getContext());
+        LitaniesAdapter litaniesAdapter = new LitaniesAdapter(localDataSet,getContext(),this);
         recyclerView.setAdapter(litaniesAdapter);
         litaniesAdapter.notifyDataSetChanged();
     }
@@ -94,5 +96,10 @@ public class LitaniesListFragment extends Fragment {
         Mockdb db = new Mockdb();
         localDataSet = db.getMockLitanies(50);
 
+    }
+
+    @Override
+    public void onLitanyClick(Litany litany) {
+        ((MainActivity) getActivity()).openFragment(litany);
     }
 }
