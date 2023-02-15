@@ -4,9 +4,22 @@ Simple app for praying
 
 TODO>
 - adding and editing prayers, novenas, litanies
-- fixing backpressing
-- fixing navbar items selection
-- sqlite
-- missing fragments
+
+- sqlite + room
+
 - adding additional functionality
   - daily pray
+
+IDEAS
+- možnost vytvorit zoznam modlitieb na dnesny den - automaticky zmena dna noveny atd - viacero zoznamov
+- funkcna novena 
+- automaticke opakovanie noven
+- moznost pridania litanii na konci noveny
+- umoznit pridat v ktorom case sa modlit - notifikacne pripomienky
+- 
+
+DONE
+- fixing backpressing
+- fixing navbar items selection
+- missing fragments
+
