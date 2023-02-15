@@ -17,10 +17,8 @@ import java.util.ArrayList;
 import sk.mmarcincin.monoli.MainActivity;
 import sk.mmarcincin.monoli.R;
 import sk.mmarcincin.monoli.adapters.NovenasAdapter;
-import sk.mmarcincin.monoli.database.DatabaseHelper;
 import sk.mmarcincin.monoli.interfaces.NovenaOnClickListener;
 import sk.mmarcincin.monoli.models.Novena;
-import sk.mmarcincin.monoli.models.Prayer;
 import sk.mmarcincin.monoli.utils.Mockdb;
 
 /**
