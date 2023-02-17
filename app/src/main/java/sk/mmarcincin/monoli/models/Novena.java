@@ -1,13 +1,14 @@
 package sk.mmarcincin.monoli.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 public class Novena {
 
     private int id;
     private String name;
     private String intro;
-    private String[] days;
+    private ArrayList<String> days;
     private int category;
     private int order;
     private boolean favorite;
@@ -15,7 +16,7 @@ public class Novena {
     private int litanyId;
     private LocalDateTime createdAt;
 
-    public Novena(int id, String name, String intro, String[] days, int category, int order, boolean favorite, boolean custom, int litanyId, LocalDateTime createdAt) {
+    public Novena(int id, String name, String intro, ArrayList<String> days, int category, int order, boolean favorite, boolean custom, int litanyId, LocalDateTime createdAt) {
         this.id = id;
         this.name = name;
         this.intro = intro;
@@ -56,11 +57,11 @@ public class Novena {
         this.intro = intro;
     }
 
-    public String[] getDays() {
+    public ArrayList<String> getDays() {
         return days;
     }
 
-    public void setDays(String[] days) {
+    public void setDays(ArrayList<String> days) {
         this.days = days;
     }
 

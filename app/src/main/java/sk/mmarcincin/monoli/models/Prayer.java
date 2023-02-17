@@ -1,8 +1,12 @@
 package sk.mmarcincin.monoli.models;
 
-import java.time.LocalDateTime;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import java.time.LocalDateTime;
+@Entity
 public class Prayer {
+    @PrimaryKey
     private int id;
     private String name;
     private String text;

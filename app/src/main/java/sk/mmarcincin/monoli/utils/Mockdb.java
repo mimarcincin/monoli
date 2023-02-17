@@ -58,10 +58,10 @@ public class Mockdb {
         return n;
     }
 
-    private String[] getRandomNovenaDays(int i) {
-        String[] days = new String[i];
+    private ArrayList<String> getRandomNovenaDays(int i) {
+        ArrayList<String> days = new ArrayList<String>();
         for (int j = 0; j < i; j++) {
-            days[j] = repeater(j+"denNoveny",10)+i;
+            days.add(repeater(j+"denNoveny",10)+i);
         }
         return days;
     }

@@ -75,6 +75,6 @@ public class NovenaFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         textTextView = view.findViewById(R.id.novena_textView);
-        textTextView.setText(novena.getDays()[0]);
+        textTextView.setText(novena.getDays().get(0));
     }
 }
